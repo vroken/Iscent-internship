@@ -3,12 +3,12 @@
 @section('content')
     <div class="login-right">
         <div class="login-right-wrap">
-            <h1>Sign Up</h1>
-            <p class="account-subtitle">Enter details to create your account</p>
+            <h1>Register Account</h1>
+            <p class="account-subtitle">Silahkan regristasi terlebih dahulu</p>
             <form action="{{ route('register') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label>Full Name <span class="login-danger">*</span></label>
+                    <label>Nama Lengkap <span class="login-danger">*</span></label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" name="name">
                     <span class="profile-views"><i class="fas fa-user-circle"></i></span>
                 </div>
@@ -17,21 +17,43 @@
                     <input type="email" class="form-control @error('email') is-invalid @enderror" name="email">
                     <span class="profile-views"><i class="fas fa-envelope"></i></span>
                 </div>
+                <div class="form-group">
+                    <label>Nomor Telepon <span class="login-danger">*</span></label>
+                    <input type="number" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number">
+                    <span class="profile-views"><i class="fas fa-user-circle"></i></span>
+                </div>
+                <div class="form-group calendar-icon">
+                    <label>Tanggal Lahir<span class="login-danger">*</span></label>
+                    <input class="form-control datetimepicker @error('date_of_birth') is-invalid @enderror" name="date_of_birth" type="text" placeholder="DD-MM-YYYY" value="{{ old('date_of_birth') }}">
+                    @error('date_of_birth')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>Alamat Lengkap <span class="login-danger">*</span></label>
+                    <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" placeholder="Enter address" value="{{ old('address') }}">
+                    @error('address')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
                 {{-- insert defaults --}}
-                <input type="hidden" class="image" name="image" value="photo_defaults.jpg">
+                {{-- <input type="hidden" class="image" name="image" value="photo_defaults.jpg"> --}}
                 <div class="form-group local-forms">
-                    <label>Role Name <span class="login-danger">*</span></label>
-                    <select class="form-control select @error('role_name') is-invalid @enderror" name="role_name" id="role_name">
-                        <option selected disabled>Role Type</option>
-                        @foreach ($role as $name)
-                            <option value="{{ $name->role_type }}">{{ $name->role_type }}</option>
-                        @endforeach
+                    <label>Jenis Kelamin <span class="login-danger">*</span></label>
+                    <select class="form-control select  @error('gender') is-invalid @enderror" name="gender">
+                        <option selected disabled>Pilih Jenis Kelamin</option>
+                        <option value="Perempuan" {{ old('gender') == 'Perempuan' ? "selected" :"Perempuan"}}>Perempuan</option>
+                        <option value="Laki-Laki" {{ old('gender') == 'Laki-Laki' ? "selected" :""}}>Laki-Laki</option>
                     </select>
-                    @error('role_name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                    @error('gender')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 
                 <div class="form-group">
@@ -49,16 +71,6 @@
                     <button class="btn btn-primary btn-block" type="submit">Register</button>
                 </div>
             </form>
-            <div class="login-or">
-                <span class="or-line"></span>
-                <span class="span-or">or</span>
-            </div>
-            <div class="social-login">
-                <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
         </div>
     </div>
 @endsection

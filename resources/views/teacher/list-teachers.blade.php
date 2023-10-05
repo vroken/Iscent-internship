@@ -107,7 +107,8 @@
                                         </td>
                                         <td>10</td>
                                         <td>{{ $list->gender }}</td>
-                                        <td>Mathematics</td>
+            
+                                        <td>{{ auth()->user()->role }}</td>
                                         <td>A</td>
                                         <td>{{ $list->mobile }}</td>
                                         <td>{{ $list->address }}</td>

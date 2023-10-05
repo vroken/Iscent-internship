@@ -89,12 +89,6 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Department <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" name="department" value="{{ $users->department }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
                                             <label>Updated Date <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="updated_at" value="{{ $users->updated_at }}" readonly>
                                         </div>

@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Role;
+use App\Models\User;
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Teacher extends Model
 {
@@ -24,4 +27,16 @@ class Teacher extends Model
         'zip_code',
         'country',
     ];
+
+    public function role() {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function student() {
+        return $this->belongsTo(Student::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

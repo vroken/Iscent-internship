@@ -12,6 +12,9 @@ use App\Http\Controllers\Setting;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\InternshipController;
+use App\Http\Controllers\RoleController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +36,18 @@ function set_active( $route ) {
 }
 
 Route::get('/', function () {
+    return view('home.content');
+});
+
+Route::get('/about', function () {
+    return view('home.about');
+});
+
+Route::get('/services', function () {
+    return view('home.services');
+});
+
+Route::get('/dashboard', function () {
     return view('auth.login');
 });
 
@@ -66,7 +81,7 @@ Route::controller(RegisterController::class)->group(function () {
 
 // -------------------------- main dashboard ----------------------//
 Route::controller(HomeController::class)->group(function () {
-    Route::get('/home', 'index')->middleware('auth')->name('home');
+    Route::get('/dashboard', 'index')->middleware('auth')->name('home');
     Route::get('user/profile/page', 'userProfile')->middleware('auth')->name('user/profile/page');
     Route::get('teacher/dashboard', 'teacherDashboardIndex')->middleware('auth')->name('teacher/dashboard');
     Route::get('student/dashboard', 'studentDashboardIndex')->middleware('auth')->name('student/dashboard');
@@ -115,3 +130,9 @@ Route::controller(DepartmentController::class)->group(function () {
     Route::get('department/add/page', 'indexDepartment')->middleware('auth')->name('department/add/page'); // page add department
     Route::get('department/edit/page', 'editDepartment')->middleware('auth')->name('department/edit/page'); // page add department
 });
+
+// ----------------------- Jurusan --------------------------------//
+Route::resource('roles/page', RoleController::class)->except('show')->middleware('auth');
+
+
+Route::resource('/usulan', InternshipController::class)->middleware('auth');

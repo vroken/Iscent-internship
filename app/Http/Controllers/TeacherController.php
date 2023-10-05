@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
 use DB;
 use Hash;
@@ -15,7 +16,9 @@ class TeacherController extends Controller
     /** add teacher page */
     public function teacherAdd()
     {
-        return view('teacher.add-teacher');
+        return view('teacher.add-teacher', [
+            'roles' => Role::all(),
+        ]);
     }
 
     /** teacher list */
@@ -25,7 +28,14 @@ class TeacherController extends Controller
             ->join('teachers','teachers.teacher_id','users.user_id')
             ->select('users.user_id','users.name','users.avatar','teachers.id','teachers.gender','teachers.mobile','teachers.address')
             ->get();
-        return view('teacher.list-teachers',compact('listTeacher'));
+        
+        // $listRoles = User::whereHas('role', function ($query) {
+        //     $query->where('name', 'Teacher');
+        // })->with('roles')->get();
+
+        return view('teacher.list-teachers',compact('listTeacher'), [
+            'roles' => Role::all(),
+        ]);
     }
 
     /** teacher Grid */

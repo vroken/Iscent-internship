@@ -109,6 +109,26 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="form-group local-forms">
+                                        <label>Role <span class="login-danger">*</span></label>
+                                        <select class="form-control select  @error('gender') is-invalid @enderror" name="roles">
+                                            <option selected disabled>Select Role</option>
+                                            @foreach ($roles as $role)
+                                                @if(old('roles') == $role->id)
+                                                    <option title="Combo 1" value="{{ $role->id }}" selected>{{ $role->name }}</option>
+                                                @else
+                                                    <option title="Combo 1" class="text-left" value="{{ $role->id }}">{{ $role->name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        @error('gender')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="col-12">
                                     <h5 class="form-title"><span>Login Details</span></h5>
                                 </div>

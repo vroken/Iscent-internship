@@ -3,10 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Student;
+use App\Models\Teacher;
+use App\Models\DataMahasiswa;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -30,6 +33,9 @@ class User extends Authenticatable
         'avatar',
         'position',
         'department',
+        'gender',
+        'address',
+        'date_of_birth',
         'password',
     ];
 
@@ -51,4 +57,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // public function student() {
+    //     return $this->hasMany(Student::class);
+    // }
+
+    // public function teacher() {
+    //     return $this->hasMany(Teacher::class);
+    // }
+
+    public function dataMahasiswas()
+    {
+        return $this->hasMany(DataMahasiswa::class, 'mahasiswa_id', 'id');
+    }
 }

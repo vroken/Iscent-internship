@@ -44,7 +44,6 @@ class UserManagementController extends Controller
                 $role_name    = $request->role_name;
                 $position     = $request->position;
                 $phone        = $request->phone_number;
-                $department   = $request->department;
                 $status       = $request->status;
 
                 $image_name = $request->hidden_avatar;
@@ -71,7 +70,6 @@ class UserManagementController extends Controller
                     'email'        => $email,
                     'position'     => $position,
                     'phone_number' => $phone,
-                    'department'   => $department,
                     'status'       => $status,
                     'avatar'       => $image_name,
                 ];
