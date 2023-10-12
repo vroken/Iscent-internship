@@ -74,8 +74,8 @@
                                                 <label class="form-check-label" for="inlineRadio3" class="text-muted">Reguler</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="jenis_magang" id="inlineRadio4" value="MoU" @if(old('jenis_magang') == 'MoU (Khusus untuk peserta yang masuk dalam program kerja sama magang)') checked @endif/>
-                                                <label class="form-check-label" for="inlineRadio4" class="text-muted">MoU (Khusus untuk peserta yang masuk dalam program kerja sama magang)</label>
+                                                <input class="form-check-input" type="radio" name="jenis_magang" id="inlineRadio4" value="Non Reguler" @if(old('jenis_magang') == 'Non Reguler') checked @endif/>
+                                                <label class="form-check-label" for="inlineRadio4" class="text-muted">Non Reguler</label>
                                             </div>
                                             @error('jenis_magang')
                                                 <span class="invalid-feedback" role="alert">

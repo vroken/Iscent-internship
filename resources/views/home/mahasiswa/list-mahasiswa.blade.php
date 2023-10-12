@@ -80,32 +80,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($studentList as $key=>$list )
+                                        @foreach ($students as $student )
                                         <tr>
                                             <td>
                                                 <div class="form-check check-tables">
                                                     <input class="form-check-input" type="checkbox" value="something">
                                                 </div>
                                             </td>
-                                            <td>STD{{ ++$key }}</td>
-                                            <td hidden class="id">{{ $list->id }}</td>
-                                            <td hidden class="avatar">{{ $list->upload }}</td>
-                                            <td>
-                                                <h2 class="table-avatar">
-                                                    <a href="student-details.html"class="avatar avatar-sm me-2">
-                                                        <img class="avatar-img rounded-circle" src="{{ Storage::url('student-photos/'.$list->upload) }}" alt="User Image">
-                                                    </a>
-                                                    <a href="student-details.html">{{ $list->first_name }} {{ $list->last_name }}</a>
-                                                </h2>
-                                            </td>
-                                            <td>{{ $list->class }} {{ $list->section }}</td>
-                                            <td>{{ $list->date_of_birth }}</td>
-                                            <td>Soeng Soeng</td>
-                                            <td>{{ $list->phone_number }}</td>
-                                            <td>110 Sen Sok Steet,PP</td>
+                                            <td>{{ $student->user->name }}</td>
+                                            <td>{{ $student->jenjang_pendidikan }}</td>
+                                            <td>{{ $student->jurusan }}</td>
+                                            <td>{{ $student->lokasi_magang }}</td>
+                                            <td>{{ $student->role_magang }}</td>
+                                            <td>{{ $student->internship_start_date }} s/d {{ $student->internship_end_date }}</td>
                                             <td class="text-end">
                                                 <div class="actions">
-                                                    <a href="{{ url('student/edit/'.$list->id) }}" class="btn btn-sm bg-danger-light">
+                                                    <a href="/usulan/{{ $student->id }}" class="btn btn-sm bg-danger-light">
+                                                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                                    </a>
+                                                    <a href="/usulan/{{ $student->id }}/edit" class="btn btn-sm bg-danger-light">
                                                         <i class="feather-edit"></i>
                                                     </a>
                                                     <a class="btn btn-sm bg-danger-light student_delete" data-bs-toggle="modal" data-bs-target="#studentUser">
@@ -134,12 +127,16 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('student/delete') }}" method="POST">
+                    @foreach ($students as $student)
+                    <form action="{{ route('usulan.destroy', ['id' => $student->id]) }}" method="POST">
+                        @endforeach
+                        @method('DELETE')
                         @csrf
                         <div class="delete-wrap text-center">
                             <div class="del-icon">
                                 <i class="feather-x-circle"></i>
                             </div>
+                            
                             <input type="hidden" name="id" class="e_id" value="">
                             <input type="hidden" name="avatar" class="e_avatar" value="">
                             <h2>Sure you want to delete</h2>
@@ -149,6 +146,7 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>

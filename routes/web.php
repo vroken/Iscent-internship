@@ -136,3 +136,8 @@ Route::resource('roles/page', RoleController::class)->except('show')->middleware
 
 
 Route::resource('/usulan', InternshipController::class)->middleware('auth');
+Route::get('/usulan/view/dashboard', [InternshipController::class, 'viewDashboard'])->middleware('auth');
+Route::delete('/usulan/{id}', [InternshipController::class, 'destroy'])->name('usulan.destroy');
+// Route::get('/usulan/{id}/download/{fileType}', [DataMahasiswaController::class, 'downloadFile'])->name('data-mahasiswa.download');
+Route::put('/usulan/{id}', [DataMahasiswaController::class, 'update']);
+

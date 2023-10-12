@@ -11,7 +11,7 @@
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis cum recusandae eum laboriosam voluptatem repudiandae odio, vel exercitationem officiis provident minima. </p>
           </blockquote>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-            <a href="#about" class="btn-get-started">Daftar Disini!</a>
+            <a href="/usulan" class="btn-get-started">Daftar Disini!</a>
           </div>
 
         </div>

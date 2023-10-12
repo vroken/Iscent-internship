@@ -23,14 +23,14 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
-                        <li><a href="{{ route('student/list') }}"  class="{{set_active(['student/list','student/grid'])}}">List Pendaftaran</a></li>
+                        <li><a href="/usulan/view/dashboard"  class="{{set_active(['student/list','student/grid'])}}">List Pendaftaran</a></li>
                         {{-- <li><a href="{{ route('student/add/page') }}" class="{{set_active(['student/add/page'])}}">Student Add</a></li> --}}
                         <li><a class="{{ (request()->is('student/edit/*')) ? 'active' : '' }}">Edit Pendaftaran</a></li>
                         {{-- <li><a href=""  class="{{ (request()->is('student/profile/*')) ? 'active' : '' }}">Student View</a></li> --}}
                     </ul>
                 </li>
 
-                <li class="submenu  {{set_active(['teacher/add/page','teacher/list/page','teacher/grid/page','teacher/edit'])}} {{ (request()->is('teacher/edit/*')) ? 'active' : '' }}">
+                {{-- <li class="submenu  {{set_active(['teacher/add/page','teacher/list/page','teacher/grid/page','teacher/edit'])}} {{ (request()->is('teacher/edit/*')) ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-chalkboard-teacher"></i>
                         <span> Teachers</span>
                         <span class="menu-arrow"></span>
@@ -41,7 +41,7 @@
                         <li><a href="{{ route('teacher/add/page') }}" class="{{set_active(['teacher/add/page'])}}">Teacher Add</a></li>
                         <li><a class="{{ (request()->is('teacher/edit/*')) ? 'active' : '' }}">Teacher Edit</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 
                 {{-- <li class="submenu {{set_active(['department/add/page','department/edit/page'])}}">
                     <a href="#"><i class="fas fa-building"></i>
